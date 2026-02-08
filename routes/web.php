@@ -9,4 +9,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/dashboard',[HomeController::class,'index']);
-Route::get('/chat',[ChatController::class,'index']);
+
+Route::prefix('chat')->controller(ChatController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/getChatWindow', 'getChatWindow');
+    Route::get('/getMessages/{user}', 'getMessages');
+    Route::post('/sendMessage', 'sendMessage');
+});

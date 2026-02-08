@@ -4,7 +4,7 @@
         <!-- Start of Babble -->
         <div class="babble tab-pane fade active show" id="list-chat" role="tabpanel" aria-labelledby="list-chat-list">
 
-            @include('chat.window.messagebox.index')
+            <div id="chat-messagebox-container"></div>
 
 
             <!-- Start of Call -->

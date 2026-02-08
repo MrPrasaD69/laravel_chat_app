@@ -11,6 +11,9 @@ class ChatController extends Controller
     }
 
     public function getChatWindow(){
-        return view('chat.messagebox');
+
+        //user_id
+        
+        return view('chat.window.messagebox.index');
     }
 }

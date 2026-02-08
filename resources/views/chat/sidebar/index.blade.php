@@ -68,7 +68,7 @@
                     <div class="discussions">
                         <h1>Discussions</h1>
                         <div class="list-group" id="chats" role="tablist">
-                            <a href="#list-chat" class="filterDiscussions all unread single active" id="list-chat-list" data-toggle="list" role="tab">
+                            <a href="" class="filterDiscussions all unread single active user_contact" id="list-chat-list" data-toggle="list" role="tab">
                                 <img class="avatar-md" src="{{ url('assets/img/avatars/avatar-female-1.jpg') }}" data-toggle="tooltip" data-placement="top" title="Janette" alt="avatar">
                                 <div class="status">
                                     <i class="material-icons online">fiber_manual_record</i>
