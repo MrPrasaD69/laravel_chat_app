@@ -16,9 +16,9 @@
 
 <div class="layout">
     
-    @include('chat.navigation')
+    @include('chat.navigation.index')
 
-    @include('chat.sidebar')
+    @include('chat.sidebar.index')
 
     <!-- Start of Add Friends -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
@@ -86,7 +86,7 @@
     <!-- End of Create Chat -->
      
     <!-- Right Chat Window -->
-    @include('chat.window')
+    @include('chat.window.index')
     <!-- Right Chat Window -->
      
 </div>
