@@ -23,7 +23,18 @@
                         Dropdown
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li>
+                            @auth
+                                <form method="POST" action="{{ url('/logout') }}">
+                                    @csrf
+                                    <button type="submit">Logout</button>
+                                </form>
+                            @endauth
+
+                            @guest
+                                <a href="{{ url('/login') }}">Login</a>
+                            @endguest
+                        </li>
                     </ul>
                 </li>
             </ul>

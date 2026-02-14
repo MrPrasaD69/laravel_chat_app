@@ -7,9 +7,6 @@
     <script src="{{ url('assets/js/jquery-4.0.0.js')}}" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-      @include('partials.nav')
-  </header>
 
   <main class="container mt-4">
       @yield('content')
