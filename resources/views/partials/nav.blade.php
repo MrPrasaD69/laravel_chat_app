@@ -13,29 +13,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ url('/chat') }}">Chat</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            @auth
-                                <form method="POST" action="{{ url('/logout') }}">
-                                    @csrf
-                                    <button type="submit">Logout</button>
-                                </form>
-                            @endauth
-
-                            @guest
-                                <a href="{{ url('/login') }}">Login</a>
-                            @endguest
-                        </li>
-                    </ul>
+                    @auth
+                        <form method="POST" action="{{ url('/logout') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Logout</button>
+                        </form>
+                    @endauth
                 </li>
             </ul>
         </div>

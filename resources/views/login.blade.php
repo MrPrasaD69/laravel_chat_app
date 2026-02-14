@@ -3,16 +3,72 @@
 @section('title', 'Login')
 
 @section('content')
-<h1>Login</h1>
-    <div id="loginError"></div>
-<form method="POST" action="{{ url('/attemptLogin') }}" id="loginForm">
-    @csrf
-    <input type="email" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
-    <button type="submit" id="loginBtn">Login</button>
-</form>
+<style>
+    body {
+        background: #ffffff;
+    }
+
+    .login-card {
+        border: none;
+        border-radius: 15px;
+    }
+
+    .login-card .card-body {
+        padding: 2rem;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    .btn-login {
+        border-radius: 10px;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-md-4">
+
+            <div class="card shadow login-card">
+                <div class="card-body">
+
+                    <h4 class="text-center mb-4">Login</h4>
+                    <div id="loginError" class="text-center m-3 text-danger"></div>
+                    <form method="POST" action="{{ url('/attemptLogin') }}" id="loginForm">
+                        @csrf
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-login" id="loginBtn">
+                                Login
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <!-- <div class="text-center mt-3">
+                        <small>
+                            Don't have an account? <a href="/register">Register</a>
+                        </small>
+                    </div> -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function() {
+        var loginBtn = $("#loginBtn");
 
         $('#loginForm').on('submit', function(e) {
             e.preventDefault();
@@ -26,7 +82,11 @@
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val()
                 },
-                success: function(response) {
+                beforeSend:function(){
+                    loginBtn.prop('disabled',true).html('Logging in...');
+                },
+                success: function(response){
+                    loginBtn.prop('disabled',false).html('Login');
 
                     if (response.status === 'success') {
                         window.location.href = response.redirect;
@@ -36,6 +96,7 @@
 
                 },
                 error: function(xhr) {
+                    loginBtn.prop('disabled',false).html('Login');
 
                     if (xhr.responseJSON && xhr.responseJSON.errors) {
                         let errors = xhr.responseJSON.errors;
